@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: http://lzgh.github.io/sitemap.xml
