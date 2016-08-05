@@ -152,9 +152,14 @@ ERR
     #
     # Returns string
     #
-    def category_links(categories)
-      categories.sort.map { |c| category_link c }.join(', ')
-    end
+#    def category_links(categories)
+#      categories.sort.map { |c| category_link c }.join(', ')
+#    end
+     def category_links(categories)
+      if categories != nil
+       categories.sort.map { |c| category_link c }.join(', ')
+	  end
+     end
 
     # Outputs a single category as an <a> link.
     #
