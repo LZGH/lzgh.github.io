@@ -1,0 +1,35 @@
+#+TITLE: 关于
+#+DATE: 2016-08-04
+#+SETUPFILE: F:/octopress/source/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: 
+#+JEKYLL_TAGS: 
+#+JEKYLL_PUBLISHED: true
+
+
+* perl安装过程
+** Oracle Instant Client环境配置
+为了能够正常连接Oracle数据库，先配置Oracle Instant Clint，再安装Strawberry Perl
+
+Oracle Instant Client官方下载地址：http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html
+
+百度网盘地址：http://yun.baidu.com/share/link?shareid=2601558786&uk=372314040
+
+配置Oracle Instant Client需要以下三个包
+
+instantclient-basic-zip
+
+instantclient-sdk.zip
+
+instantclient-sqlplus.zip
+
+下载后解压到同一个文件夹,将该文件夹添加到Path环境变量，如PATH:F:\instantclient_12_1;
+
+配置完环境变量后可以安装Strawberry Perl
+** Strawberry Perl安装
+Strawberry Perl官方下载地址：http://strawberryperl.com/
+
+百度网盘地址：http://pan.baidu.com/s/1slzl07b
+
+下载完成按正常流程安装即可。
+
