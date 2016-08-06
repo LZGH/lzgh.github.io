@@ -4,11 +4,89 @@
   
     
     <entry>
+      <title></title>
+      <url>https://lzgh.github.io/2016/08/06/flymd/</url>
+      <content type="html"><![CDATA[<!DOCTYPE html>
+<html>
+  <head>
+    <!--- This is the css used by for displaying gfm. --->
+    <!--- Source --->
+    <!--- https://github.com/sindresorhus/github-markdown-css --->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mola-T/flymd/master/cdn/github-markdown_1_0_0.css">
+
+    <!--- My css file to format the page --->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mola-T/flymd/master/cdn/flymd_1_1_0.css">
+
+    <!--- jQuery --->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+
+    <!--- This is the script for converting md to html --->
+    <!--- Source --->
+    <!--- https://github.com/showdownjs/showdown --->
+    <script type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.3.0/dist/showdown.min.js"></script>
+
+    <!--- My js file. --->
+    <script type="text/javascript" src="https://cdn.rawgit.com/mola-T/flymd/master/cdn/flymd_1_3_0.js"></script>
+  </head>
+
+  <body>
+    <div class="flymd-static">
+      <ul>
+        <li><input type="button" id="GFMize" value="GFMize"></li>
+        <li><input type="button" id="MathJaxize" value="MathJaxize"></li>
+        <li><input type="button" id="GFMmode" value="GFM Mode"></li>
+        <li><input type="button" id="AutoRefresh" value="Auto Refresh"></li>
+        <li><input type="button" id="AutoScroll" value="Auto Scroll"></li>
+      </ul>
+    </div>
+    
+    <article class="markdown-body">
+      <span id="replacer">
+        <h1>If you see this page, you are so lucky.......</h1>
+        <p>Hello, I am Mola-T.</p>
+        <p>You can find me at <a href="mailto:mola@molamola.xyz" target="_blank" rel="external">mola@molamola.xyz</a>.</p>
+        <p>It is the github page of this project <a href="https://github.com/mola-T/flymd" target="_blank" rel="external">https://github.com/mola-T/flymd</a>.</p> 
+        <p>If you see this page, it is most possibly due to browser compatibility problem.</p>
+        <p>You can check for the solution here:</p>
+        <h3><a href="https://github.com/mola-T/flymd/blob/master/browser.md" target="_blank" rel="external">https://github.com/mola-T/flymd/blob/master/browser.md</a></h3>
+      </span>
+    </article>
+  </body>
+</html>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Strawberry Perl安装]]></title>
       <url>https://lzgh.github.io/2016/08/06/Strawberry-Perl%E5%AE%89%E8%A3%85/</url>
       <content type="html"><![CDATA[<h1 id="为什么选择-Strawberry-Perl"><a href="#为什么选择-Strawberry-Perl" class="headerlink" title="为什么选择 Strawberry Perl"></a>为什么选择 Strawberry Perl</h1><p>由于手动安装DBD::Oracle模块经常失败，所以选择了Strawberry Perl，它内置了很多模块，省去了安装各种模块的麻烦。</p>
-<h1 id="Oracle-Instant-Client环境配置"><a href="#Oracle-Instant-Client环境配置" class="headerlink" title="Oracle Instant Client环境配置"></a>Oracle Instant Client环境配置</h1><p>为了能够正常连接Oracle数据库，先配置Oracle Instant Clint，再安装Strawberry Perl<br>Oracle Instant Client官方下载地址：<a href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html" target="_blank" rel="external">Oracle Instant Client</a><br>配置Oracle Instant Client需要以下三个包<br>instantclient-basic-zip<br>instantclient-sdk.zip<br>instantclient-sqlplus.zip<br>将他们解压到同一文件夹下。<br>也可以在百度网盘下载完整压缩包，<br>百度网盘地址：<a href="http://yun.baidu.com/share/link?shareid=2601558786&amp;uk=372314040" target="_blank" rel="external">百度网盘</a><br><strong>将该文件夹添加到Path环境变量，如PATH:F:\instantclient_12_1;</strong><br>配置完环境变量后可以安装Strawberry Perl</p>
+<h1 id="Oracle-Instant-Client环境配置"><a href="#Oracle-Instant-Client环境配置" class="headerlink" title="Oracle Instant Client环境配置"></a>Oracle Instant Client环境配置</h1><p>为了能够正常连接Oracle数据库，先配置Oracle Instant Clint，再安装Strawberry Perl<br>Oracle Instant Client官方下载地址：<a href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html" target="_blank" rel="external">Oracle Instant Client</a><br>配置Oracle Instant Client需要以下三个包<br>instantclient-basic-zip<br>instantclie<br>nt-sdk.zip<br>instantclient-sqlplus.zip<br>将他们解压到同一文件夹下。<br>也可以在百度网盘下载完整压缩包，<br>百度网盘地址：<a href="http://yun.baidu.com/share/link?shareid=2601558786&amp;uk=372314040" target="_blank" rel="external">百度网盘</a><br><strong>将该文件夹添加到Path环境变量，如PATH:F:\instantclient_12_1;</strong><br>配置完环境变量后可以安装Strawberry Perl</p>
 <h1 id="Strawberry-Perl安装"><a href="#Strawberry-Perl安装" class="headerlink" title="Strawberry Perl安装"></a>Strawberry Perl安装</h1><p>Strawberry Perl官方下载地址：<a href="http://strawberryperl.com/" target="_blank" rel="external">Strawberry Perl</a><br>百度网盘地址：<a href="http://pan.baidu.com/s/1slzl07b" target="_blank" rel="external">百度网盘</a><br>下载完成按正常流程安装即可。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[notepad++配置perl运行环境]]></title>
+      <url>https://lzgh.github.io/2016/08/06/flymd/</url>
+      <content type="html"><![CDATA[<h1 id="1-安装NppExec插件"><a href="#1-安装NppExec插件" class="headerlink" title="1 安装NppExec插件"></a>1 安装NppExec插件</h1><ul>
+<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。</li>
+</ul>
+<p><img src="/image/notepad_1.png" alt=""> fLyMd-mAkEr</p>
+<ul>
+<li>选取NppExec插件，然后点击Install</li>
+</ul>
+<p><img src="image/notepad_2.png" alt=""><br><a id="more"></a></p>
+<h1 id="2-配置编译perl"><a href="#2-配置编译perl" class="headerlink" title="2 配置编译perl"></a>2 配置编译perl</h1><ul>
+<li>按下F6出现出现输入框，输入perl “$(FULL_CURRENT_PATH)”点击保存</li>
+</ul>
+<p><img src="image/notepad_3.png" alt=""></p>
+<h1 id="3-配置NppExec"><a href="#3-配置NppExec" class="headerlink" title="3 配置NppExec"></a>3 配置NppExec</h1><ul>
+<li>打开Advanced Options配置信息</li>
+</ul>
+<p><img src="image/notepad_4.png" alt=""> </p>
+<p><img src="image/notepad_5.png" alt=""> </p>
+<h1 id="4-配置快捷键"><a href="#4-配置快捷键" class="headerlink" title="4 配置快捷键"></a>4 配置快捷键</h1><p><img src="image/notepad_6.png" alt=""> </p>
+<p><img src="image/notepad_7.png" alt=""> </p>
 ]]></content>
     </entry>
     
@@ -18,22 +96,22 @@
       <content type="html"><![CDATA[<h1 id="1-安装NppExec插件"><a href="#1-安装NppExec插件" class="headerlink" title="1 安装NppExec插件"></a>1 安装NppExec插件</h1><ul>
 <li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。</li>
 </ul>
-<p><img src="../image/notepad_1.png" alt=""> </p>
+<p><img src="/image/notepad_1.png" alt=""> </p>
 <ul>
 <li>选取NppExec插件，然后点击Install</li>
 </ul>
-<p><img src="../image/notepad_2.png" alt=""><br><a id="more"></a></p>
+<p><img src="image/notepad_2.png" alt=""><br><a id="more"></a></p>
 <h1 id="2-配置编译perl"><a href="#2-配置编译perl" class="headerlink" title="2 配置编译perl"></a>2 配置编译perl</h1><ul>
 <li>按下F6出现出现输入框，输入perl “$(FULL_CURRENT_PATH)”点击保存</li>
 </ul>
-<p><img src="../image/notepad_3.png" alt=""></p>
+<p><img src="image/notepad_3.png" alt=""></p>
 <h1 id="3-配置NppExec"><a href="#3-配置NppExec" class="headerlink" title="3 配置NppExec"></a>3 配置NppExec</h1><ul>
 <li>打开Advanced Options配置信息</li>
 </ul>
-<p><img src="../image/notepad_4.png" alt=""> </p>
-<p><img src="../image/notepad_5.png" alt=""> </p>
-<h1 id="4-配置快捷键"><a href="#4-配置快捷键" class="headerlink" title="4 配置快捷键"></a>4 配置快捷键</h1><p><img src="../image/notepad_6.png" alt=""> </p>
-<p><img src="../image/notepad_7.png" alt=""> </p>
+<p><img src="image/notepad_4.png" alt=""> </p>
+<p><img src="image/notepad_5.png" alt=""> </p>
+<h1 id="4-配置快捷键"><a href="#4-配置快捷键" class="headerlink" title="4 配置快捷键"></a>4 配置快捷键</h1><p><img src="image/notepad_6.png" alt=""> </p>
+<p><img src="image/notepad_7.png" alt=""> </p>
 ]]></content>
     </entry>
     
