@@ -91,8 +91,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Li Blog" type="application/atom+xml" />
 
@@ -107,12 +105,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://lzgh.github.io/categories/index.html">
+<meta property="og:title" content="Li Blog">
+<meta property="og:url" content="https://lzgh.github.io/index.html">
 <meta property="og:site_name" content="Li Blog">
-<meta property="og:updated_time" content="2016-08-06T05:37:33.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Li Blog">
 
 
 
@@ -133,15 +130,9 @@
 
 
 
-  <link rel="canonical" href="https://lzgh.github.io/categories/"/>
+  <link rel="canonical" href="https://lzgh.github.io/"/>
 
-  <title>
-  
-
-  
-    分类 | Li Blog
-  
-</title>
+  <title> Li Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -162,7 +153,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,20 +265,414 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <div id="posts" class="posts-expand">
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 2 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/07/emacs-Markdown实时预览/" itemprop="url">
+                  emacs Markdown实时预览
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T11:08:22+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/emacs/" itemprop="url" rel="index">
+                    <span itemprop="name">emacs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/07/emacs-Markdown实时预览/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/07/emacs-Markdown实时预览/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/07/emacs-Markdown实时预览/" class="leancloud_visitors" data-flag-title="emacs Markdown实时预览">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/emacs/">emacs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/perl/">perl</a><span class="category-list-count">2</span></li></ul>
-        </div>
-      </div>
+      </header>
     
-  </div>
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="为什么选择使用flymd"><a href="#为什么选择使用flymd" class="headerlink" title="为什么选择使用flymd"></a>为什么选择使用flymd</h1><p>在<a href="http://wikemacs.org/wiki/Markdown#Live_preview_as_you_type">这里</a>介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient-mode看效果演示视频并不是我想要的。</p>
+<h1 id="flymd配置"><a href="#flymd配置" class="headerlink" title="flymd配置"></a>flymd配置</h1><p>flymd的GitHub地址在<a href="https://github.com/mola-T/flymd">这里</a><br>使用flymd需要用Firefox预览，虽然有Chrome的解决方案，但不推荐，<br>如果使用的是spacemacs，在dotspacemacs-additional-packages中加入flymd，<br>在dotspacemacs/user-config配置代码如下</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">use-package</span> flymd</div><div class="line">  <span class="symbol">:init</span> (<span class="name">defun</span> my-flymd-browser-function (<span class="name">url</span>)</div><div class="line">    (<span class="name">let</span> ((<span class="name">browse-url-browser-function</span> 'browse-url-firefox))</div><div class="line">      (<span class="name">browse-url</span> url)))</div><div class="line">  (<span class="name">setq</span> flymd-browser-open-function 'my-flymd-browser-function)</div><div class="line">  <span class="symbol">:bind</span> (<span class="string">"C-c C-m"</span> . flymd-flyit)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>根据GitHub上的配置完成后，使用flymd-flyit预览时并不是我们想要的效果，浏览器打开的文件地址前没有file:///,<br>找到elpa文件夹下的flymd,打开flymd.el文件，搜索<code>funcall flymd-browser-open-function</code>在<code>(flymd-get-output-directory buffer)</code>前加上<code>&quot;file:///&quot;</code><br>修改后的代码如下<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name">funcall</span> flymd-browser-open-function</div><div class="line">	(<span class="name">concat</span> <span class="string">"file:///"</span> (<span class="name">flymd-get-output-directory</span> buffer) flymd-preview-html-filename))</div></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/07/emacs-Markdown实时预览/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/06/Strawberry-Perl安装/" itemprop="url">
+                  Strawberry Perl安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T13:57:32+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/perl/" itemprop="url" rel="index">
+                    <span itemprop="name">perl</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/06/Strawberry-Perl安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/Strawberry-Perl安装/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/06/Strawberry-Perl安装/" class="leancloud_visitors" data-flag-title="Strawberry Perl安装">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="为什么选择-Strawberry-Perl"><a href="#为什么选择-Strawberry-Perl" class="headerlink" title="为什么选择 Strawberry Perl"></a>为什么选择 Strawberry Perl</h1><p>由于手动安装DBD::Oracle模块经常失败，所以选择了Strawberry Perl，它内置了很多模块，省去了安装各种模块的麻烦。</p>
+<h1 id="Oracle-Instant-Client环境配置"><a href="#Oracle-Instant-Client环境配置" class="headerlink" title="Oracle Instant Client环境配置"></a>Oracle Instant Client环境配置</h1><p>为了能够正常连接Oracle数据库，先配置Oracle Instant Clint，再安装Strawberry Perl<br>Oracle Instant Client官方下载地址：<a href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html" target="_blank" rel="external">Oracle Instant Client</a><br>配置Oracle Instant Client需要以下三个包<br>instantclient-basic-zip<br>instantclie<br>nt-sdk.zip<br>instantclient-sqlplus.zip<br>将他们解压到同一文件夹下。<br>也可以在百度网盘下载完整压缩包，<br>百度网盘地址：<a href="http://yun.baidu.com/share/link?shareid=2601558786&amp;uk=372314040" target="_blank" rel="external">百度网盘</a><br><strong>将该文件夹添加到Path环境变量，如PATH:F:\instantclient_12_1;</strong><br>配置完环境变量后可以安装Strawberry Perl</p>
+<h1 id="Strawberry-Perl安装"><a href="#Strawberry-Perl安装" class="headerlink" title="Strawberry Perl安装"></a>Strawberry Perl安装</h1><p>Strawberry Perl官方下载地址：<a href="http://strawberryperl.com/" target="_blank" rel="external">Strawberry Perl</a><br>百度网盘地址：<a href="http://pan.baidu.com/s/1slzl07b" target="_blank" rel="external">百度网盘</a><br>下载完成按正常流程安装即可。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/06/notepad-配置perl运行环境/" itemprop="url">
+                  notepad++配置perl运行环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T11:29:25+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/perl/" itemprop="url" rel="index">
+                    <span itemprop="name">perl</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/06/notepad-配置perl运行环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/notepad-配置perl运行环境/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/06/notepad-配置perl运行环境/" class="leancloud_visitors" data-flag-title="notepad++配置perl运行环境">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-安装NppExec插件"><a href="#1-安装NppExec插件" class="headerlink" title="1 安装NppExec插件"></a>1 安装NppExec插件</h1><ul>
+<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。</li>
+</ul>
+<p><img src="/image/notepad_1.png" alt=""> </p>
+<ul>
+<li>选取NppExec插件，然后点击Install</li>
+</ul>
+<p><img src="/image/notepad_2.png" alt=""><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/06/notepad-配置perl运行环境/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
 
 
           </div>
