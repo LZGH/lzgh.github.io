@@ -110,12 +110,12 @@
 <meta property="og:url" content="https://lzgh.github.io/2016/08/07/emacs-Markdown实时预览/index.html">
 <meta property="og:site_name" content="Li Blog">
 <meta property="og:description" content="为什么选择使用flymd在这里介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient">
-<meta property="og:image" content="http://obp3vkygi.qnssl.com/images/flymd.png">
+<meta property="og:image" content="http://obp3vkygi.qnssl.com/static/images/flymd.png">
 <meta property="og:updated_time" content="2016-08-07T13:53:43.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="emacs Markdown实时预览">
 <meta name="twitter:description" content="为什么选择使用flymd在这里介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient">
-<meta name="twitter:image" content="http://obp3vkygi.qnssl.com/images/flymd.png">
+<meta name="twitter:image" content="http://obp3vkygi.qnssl.com/static/images/flymd.png">
 
 
 
@@ -372,7 +372,7 @@
 <a id="more"></a>
 <p> <strong>修改完后，要将该文件重新编译或者删除flymd.elc文件，否则修改无效</strong></p>
 <h1 id="修改flymd预览文件生成的地址"><a href="#修改flymd预览文件生成的地址" class="headerlink" title="修改flymd预览文件生成的地址"></a>修改flymd预览文件生成的地址</h1><p>这一步操作是可选的，我用hexo写博客预览时，不希望flymd.md文件生成在博客的目录下，<br>在.spacemacs文件中加入<br><code>(setq flymd-output-directory &quot;F:/&quot;)</code><br>设置输出目录后，flymd.md会生成在该目录下的MD5文件夹中，我只想生成一个flymd.md，不需要那么多MD5方式产生的文件夹，<br>和之前一样，修改flymd.el文件<br>搜索<code>md5</code>，删除<code>(secure-hash &#39;md5 (buffer-file-name buffer))</code>(注意括号，不要删多了)<br>这样只会在F盘下生成一个flymd.md文件，大功告成。<br>如果要预览的文件中引用了本地的图片，那么路径就不对了，就不能显示出图片。推荐使用七牛云存储图片，就没有这个问题。<br>最后附上一张效果图</p>
-<img src="http://obp3vkygi.qnssl.com/images/flymd.png">
+<img src="http://obp3vkygi.qnssl.com/static/images/flymd.png">
 
       
     </div>
