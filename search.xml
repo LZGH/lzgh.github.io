@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[code generation]]></title>
+      <url>https://lzgh.github.io/2016/09/18/code-generation/</url>
+      <content type="html"><![CDATA[<h1 id="关于代码生成"><a href="#关于代码生成" class="headerlink" title="关于代码生成"></a>关于代码生成</h1><img src="http://obp3vkygi.qnssl.com/static/images/code_generation.gif">
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[emacs Markdown实时预览]]></title>
       <url>https://lzgh.github.io/2016/08/07/emacs-Markdown%E5%AE%9E%E6%97%B6%E9%A2%84%E8%A7%88/</url>
       <content type="html"><![CDATA[<h1 id="为什么选择使用flymd"><a href="#为什么选择使用flymd" class="headerlink" title="为什么选择使用flymd"></a>为什么选择使用flymd</h1><p>在<a href="http://wikemacs.org/wiki/Markdown#Live_preview_as_you_type" target="_blank" rel="external">这里</a>介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient-mode看效果演示视频并不是我想要的。</p>
