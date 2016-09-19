@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://lzgh.github.io/2016/08/06/Strawberry-Perl%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2016-09-19T02:24:53.051Z</lastmod>
+    <data>
+        <display>
+        <title>Strawberry Perl安装</title>
+        <pubTime>2016-08-06T05:57:32.000Z</pubTime>
+        
+        <tag>perl</tag>
+         
+         
+           
+             
+              <breadCrumb title="perl" url="https://lzgh.github.io/categories/perl/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://lzgh.github.io/2016/09/18/code-generation/</loc>
     <lastmod>2016-09-19T01:08:26.059Z</lastmod>
     <data>
@@ -61,26 +81,6 @@
            
              
               <breadCrumb title="emacs" url="https://lzgh.github.io/categories/emacs/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://lzgh.github.io/2016/08/06/Strawberry-Perl%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2016-08-06T08:25:29.844Z</lastmod>
-    <data>
-        <display>
-        <title>Strawberry Perl安装</title>
-        <pubTime>2016-08-06T05:57:32.000Z</pubTime>
-        
-        <tag>perl</tag>
-         
-         
-           
-             
-              <breadCrumb title="perl" url="https://lzgh.github.io/categories/perl/"/>
           
         </display>
     </data>
