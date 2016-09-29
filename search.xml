@@ -8,23 +8,15 @@
       <url>https://lzgh.github.io/2016/09/27/solr/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。<br>solr参考文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/" target="_blank" rel="external">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="external">下载地址</a>，下载目前最新版6.2.1</p>
-</blockquote>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr" target="_blank" rel="external">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
-<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
-</blockquote>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3><a id="more"></a>
 <p><code>solr create -c les</code>创建一个core,创建成功后，在solr-6.2.1\server\solr文件夹下出现les文件夹，<br>重新启动solr，刷新solr控制台，core selector处选择刚才添加的core<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_select.png"><br>选择后，出现core的操作列表<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_list.png"></p>
 <h4 id="常用菜单作用："><a href="#常用菜单作用：" class="headerlink" title="常用菜单作用："></a>常用菜单作用：</h4><p>Analysis 可以测试分词效果<br>Dataimport 数据导入导入数据<br>Query      数据查询</p>
-<h4 id="常用solr查询参数介绍："><a href="#常用solr查询参数介绍：" class="headerlink" title="常用solr查询参数介绍："></a>常用solr查询参数介绍：</h4><p>q      查询关键字，默认为q=<em>:</em>，不能为空<br>fq     在q查询的结果中过滤查询,fq=type:1<br>fl     指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort<br>start  返回结果的第几条记录开始，一般分页用，默认0开始<br>rows   指定返回结果最多有多少条记录，默认值为 10，配合start实现分页<br>sort   排序方式，例如id  desc 表示按照 “id” 降序<br>wt     指定输出格式，有 xml, json, php等</p>
-<h4 id="常用solr检索运算符"><a href="#常用solr检索运算符" class="headerlink" title="常用solr检索运算符"></a>常用solr检索运算符</h4><p>?   单个任意字符的通配，如type:?1 </p>
-<ul>
-<li>多个任意字符的通配<br>~   模糊检索</li>
-</ul>
-<ul>
-<li>存在操作符<br>AND、&amp;&amp;、OR、||  布尔操作符  如q=type:1 or type:2 java发出请求时，可用+号代替空格，否则会报错q=type:1+or+type:2<br>NOT、!、-  排除操作符不能单独与项使用构成查询<br>()  用于构成子查询<br>[]  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]<br>{}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}</li>
-</ul>
+<h4 id="常用solr查询参数介绍："><a href="#常用solr查询参数介绍：" class="headerlink" title="常用solr查询参数介绍："></a>常用solr查询参数介绍：</h4><p>q     查询关键字，默认为q=<em>:</em>，不能为空<br>fq     在q查询的结果中过滤查询,fq=type:1<br>fl     指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort<br>start  返回结果的第几条记录开始，一般分页用，默认0开始<br>rows   指定返回结果最多有多少条记录，默认值为 10，配合start实现分页<br>sort   排序方式，例如id  desc 表示按照 “id” 降序<br>wt     指定输出格式，有 xml, json, php等</p>
+<h4 id="常用solr检索运算符"><a href="#常用solr检索运算符" class="headerlink" title="常用solr检索运算符"></a>常用solr检索运算符</h4><p>?   单个任意字符的通配，如type:?1<br>‘*’   多个任意字符的通配<br>‘~’   模糊检索<br>‘+’   存在操作符<br>AND、&amp;&amp;、OR、||  布尔操作符  如q=type:1 or type:2 java发出请求时，可用+号代替空格，否则会报错q=type:1+or+type:2<br>NOT、!、- 排除操作符不能单独与项使用构成查询<br>()  用于构成子查询<br>[]  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]<br>{}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}</p>
 <h3 id="配置dataimport"><a href="#配置dataimport" class="headerlink" title="配置dataimport"></a>配置dataimport</h3><p>打开les/conf文件夹下的solrconfig.xml,在75行添加jar包<br><code>&lt;lib dir=&quot;${solr.install.dir:../../../..}/dist/&quot; regex=&quot;solr-dataimporthandler-.*\.jar&quot; /&gt;</code><br>745行添加配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;requestHandler name=&quot;/dataimport&quot; class=&quot;solr.DataImportHandler&quot;&gt;</div><div class="line">  &lt;lst name=&quot;defaults&quot;&gt;</div><div class="line">    &lt;str name=&quot;config&quot;&gt;db-data-config.xml&lt;/str&gt;</div><div class="line">  &lt;/lst&gt;</div><div class="line">&lt;/requestHandler&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
 <h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><p>连接oracle需要ojdbc14.jar，放到solr-6.2.1\server\solr-webapp\webapp\WEB-INF\lib文件夹下<br>solr-6.2.1\server\solr\les\conf文件夹下创建文件db-data-config.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;dataConfig&gt;</div><div class="line">    &lt;dataSource driver=&quot;oracle.jdbc.driver.OracleDriver&quot; url=&quot;jdbc:oracle:thin:@192.168.20.132:1521:orcl&quot; user=&quot;username&quot; password=&quot;pd&quot; /&gt;</div><div class="line">    &lt;document&gt;</div><div class="line">        &lt;entity name=&quot;zhcx&quot; query=&quot;select id,bt,zy,type,key from table&quot;&gt;</div><div class="line">            &lt;field column=&quot;id&quot; name=&quot;id&quot; /&gt;</div><div class="line">            &lt;field column=&quot;bt&quot; name=&quot;bt&quot; /&gt;</div><div class="line">            &lt;field column=&quot;zy&quot; name=&quot;zy&quot; /&gt;</div><div class="line">            &lt;field column=&quot;type&quot; name=&quot;type&quot; /&gt;</div><div class="line">            &lt;field column=&quot;key&quot; name=&quot;key&quot; /&gt;</div><div class="line">        &lt;/entity&gt;</div><div class="line">    &lt;/document&gt;</div><div class="line">&lt;/dataConfig&gt;</div></pre></td></tr></table></figure></p>
 <p>打开文件managed-schema，搜索uniqueKey，将值改为你的唯一键，该唯一键如果有重复，数据将被覆盖。<br><code>&lt;uniqueKey&gt;key&lt;/uniqueKey&gt;</code><br>121行添加字段，要和db-data-config.xml中字段对应，添加后如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;field name=&quot;id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;bt&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;zy&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;type&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;key&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;_version_&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;false&quot;/&gt;</div><div class="line">&lt;field name=&quot;_root_&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;false&quot; docValues=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;_text_&quot; type=&quot;text_general&quot; indexed=&quot;true&quot; stored=&quot;false&quot; multiValued=&quot;true&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p>重启solr，Dataimport导入数据,Query进行查询，</p>
@@ -48,13 +40,11 @@
       <title><![CDATA[emacs Markdown实时预览]]></title>
       <url>https://lzgh.github.io/2016/08/07/emacs-Markdown%E5%AE%9E%E6%97%B6%E9%A2%84%E8%A7%88/</url>
       <content type="html"><![CDATA[<h1 id="为什么选择使用flymd"><a href="#为什么选择使用flymd" class="headerlink" title="为什么选择使用flymd"></a>为什么选择使用flymd</h1><p>在<a href="http://wikemacs.org/wiki/Markdown#Live_preview_as_you_type" target="_blank" rel="external">这里</a>介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient-mode看效果演示视频并不是我想要的。</p>
-<h1 id="flymd配置"><a href="#flymd配置" class="headerlink" title="flymd配置"></a>flymd配置</h1><p>flymd的GitHub地址在<a href="https://github.com/mola-T/flymd" target="_blank" rel="external">这里</a><br>使用flymd需要用Firefox预览，虽然有Chrome的解决方案，但不推荐，<br>如果使用的是spacemacs，在dotspacemacs-additional-packages中加入flymd，<br>在dotspacemacs/user-config配置代码如下</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">use-package</span> flymd</div><div class="line">  <span class="symbol">:init</span> (<span class="name">defun</span> my-flymd-browser-function (<span class="name">url</span>)</div><div class="line">    (<span class="name">let</span> ((<span class="name">browse-url-browser-function</span> 'browse-url-firefox))</div><div class="line">      (<span class="name">browse-url</span> url)))</div><div class="line">  (<span class="name">setq</span> flymd-browser-open-function 'my-flymd-browser-function)</div><div class="line">  <span class="symbol">:bind</span> (<span class="string">"C-c C-m"</span> . flymd-flyit)</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="flymd配置"><a href="#flymd配置" class="headerlink" title="flymd配置"></a>flymd配置</h1><p>flymd的GitHub地址在<a href="https://github.com/mola-T/flymd" target="_blank" rel="external">这里</a><br>使用flymd需要用Firefox预览，虽然有Chrome的解决方案，但不推荐，<br>如果使用的是spacemacs，在dotspacemacs-additional-packages中加入flymd，<br>在dotspacemacs/user-config配置代码如下<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">use-package</span> flymd</div><div class="line">  <span class="symbol">:init</span> (<span class="name">defun</span> my-flymd-browser-function (<span class="name">url</span>)</div><div class="line">    (<span class="name">let</span> ((<span class="name">browse-url-browser-function</span> 'browse-url-firefox))</div><div class="line">      (<span class="name">browse-url</span> url)))</div><div class="line">  (<span class="name">setq</span> flymd-browser-open-function 'my-flymd-browser-function)</div><div class="line">  <span class="symbol">:bind</span> (<span class="string">"C-c C-m"</span> . flymd-flyit)</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>根据GitHub上的配置完成后，使用flymd-flyit预览时并不是我们想要的效果，浏览器打开的文件地址前没有file:///,<br>找到elpa文件夹下的flymd,打开flymd.el文件，搜索<code>funcall flymd-browser-open-function</code>在<code>(flymd-get-output-directory buffer)</code>前加上<code>&quot;file:///&quot;</code><br>修改后的代码如下<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name">funcall</span> flymd-browser-open-function</div><div class="line">	(<span class="name">concat</span> <span class="string">"file:///"</span> (<span class="name">flymd-get-output-directory</span> buffer) flymd-preview-html-filename))</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p> <strong>修改完后，要将该文件重新编译或者删除flymd.elc文件，否则修改无效</strong></p>
-<h1 id="修改flymd预览文件生成的地址"><a href="#修改flymd预览文件生成的地址" class="headerlink" title="修改flymd预览文件生成的地址"></a>修改flymd预览文件生成的地址</h1><p>这一步操作是可选的，我用hexo写博客预览时，不希望flymd.md文件生成在博客的目录下，<br>在.spacemacs文件中加入<br><code>(setq flymd-output-directory &quot;F:/&quot;)</code><br>设置输出目录后，flymd.md会生成在该目录下的MD5文件夹中，我只想生成一个flymd.md，不需要那么多MD5方式产生的文件夹，<br>和之前一样，修改flymd.el文件<br>搜索<code>md5</code>，删除<code>(secure-hash &#39;md5 (buffer-file-name buffer))</code>(注意括号，不要删多了)<br>这样只会在F盘下生成一个flymd.md文件，大功告成。<br>如果要预览的文件中引用了本地的图片，那么路径就不对了，就不能显示出图片。推荐使用七牛云存储图片，就没有这个问题。<br>最后附上一张效果图</p>
-<img src="http://obp3vkygi.qnssl.com/static/images/flymd.png">
+<h1 id="修改flymd预览文件生成的地址"><a href="#修改flymd预览文件生成的地址" class="headerlink" title="修改flymd预览文件生成的地址"></a>修改flymd预览文件生成的地址</h1><p>这一步操作是可选的，我用hexo写博客预览时，不希望flymd.md文件生成在博客的目录下，<br>在.spacemacs文件中加入<br><code>(setq flymd-output-directory &quot;F:/&quot;)</code><br>设置输出目录后，flymd.md会生成在该目录下的MD5文件夹中，我只想生成一个flymd.md，不需要那么多MD5方式产生的文件夹，<br>和之前一样，修改flymd.el文件<br>搜索<code>md5</code>，删除<code>(secure-hash &#39;md5 (buffer-file-name buffer))</code>(注意括号，不要删多了)<br>这样只会在F盘下生成一个flymd.md文件，大功告成。<br>如果要预览的文件中引用了本地的图片，那么路径就不对了，就不能显示出图片。推荐使用七牛云存储图片，就没有这个问题。<br>最后附上一张效果图<br><img src="http://obp3vkygi.qnssl.com/static/images/flymd.png"></p>
 ]]></content>
     </entry>
     
@@ -71,25 +61,18 @@
       <title><![CDATA[notepad++配置perl运行环境]]></title>
       <url>https://lzgh.github.io/2016/08/06/notepad-%E9%85%8D%E7%BD%AEperl%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>
       <content type="html"><![CDATA[<h1 id="1-安装NppExec插件"><a href="#1-安装NppExec插件" class="headerlink" title="1 安装NppExec插件"></a>1 安装NppExec插件</h1><ul>
-<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。</li>
-</ul>
-<img src="http://obp3vkygi.qnssl.com/static/images/notepad_1.png">
-<ul>
-<li>选取NppExec插件，然后点击Install</li>
-</ul>
-<img src="http://obp3vkygi.qnssl.com/static/images/notepad_2.png">
+<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。<img src="http://obp3vkygi.qnssl.com/static/images/notepad_1.png"></li>
+<li>选取NppExec插件，然后点击Install<img src="http://obp3vkygi.qnssl.com/static/images/notepad_2.png">
 <a id="more"></a>
-<h1 id="2-配置编译perl"><a href="#2-配置编译perl" class="headerlink" title="2 配置编译perl"></a>2 配置编译perl</h1><ul>
-<li>按下F6出现出现输入框，输入perl “$(FULL_CURRENT_PATH)”点击保存</li>
-</ul>
-<img src="http://obp3vkygi.qnssl.com/static/images/notepad_3.png">
-<h1 id="3-配置NppExec"><a href="#3-配置NppExec" class="headerlink" title="3 配置NppExec"></a>3 配置NppExec</h1><ul>
+<h1 id="2-配置编译perl"><a href="#2-配置编译perl" class="headerlink" title="2 配置编译perl"></a>2 配置编译perl</h1></li>
+<li>按下F6出现出现输入框，输入perl “$(FULL_CURRENT_PATH)”点击保存<img src="http://obp3vkygi.qnssl.com/static/images/notepad_3.png">
+<h1 id="3-配置NppExec"><a href="#3-配置NppExec" class="headerlink" title="3 配置NppExec"></a>3 配置NppExec</h1></li>
 <li>打开Advanced Options配置信息<img src="http://obp3vkygi.qnssl.com/static/images/notepad_4.png">
-</li>
-</ul>
 <img src="http://obp3vkygi.qnssl.com/static/images/notepad_5.png">
 <h1 id="4-配置快捷键"><a href="#4-配置快捷键" class="headerlink" title="4 配置快捷键"></a>4 配置快捷键</h1><img src="http://obp3vkygi.qnssl.com/static/images/notepad_6.png">
 <img src="http://obp3vkygi.qnssl.com/static/images/notepad_7.png">
+</li>
+</ul>
 ]]></content>
     </entry>
     

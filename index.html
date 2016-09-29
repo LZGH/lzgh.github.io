@@ -327,11 +327,8 @@
         
           <blockquote>
 <p>本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。<br>solr参考文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/">下载地址</a>，下载目前最新版6.2.1</p>
-</blockquote>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
-<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
-</blockquote>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/27/solr/#more" rel="contents">
@@ -597,8 +594,7 @@
       
         
           <h1 id="为什么选择使用flymd"><a href="#为什么选择使用flymd" class="headerlink" title="为什么选择使用flymd"></a>为什么选择使用flymd</h1><p>在<a href="http://wikemacs.org/wiki/Markdown#Live_preview_as_you_type">这里</a>介绍了几种emacs中预览Markdown的方法，我最终选择的是flymd,在Firefox中可以实时预览、自动滚动，如果使用分屏的话，体验会很好。也尝试了几种方式，Livedown-mode需要通过npm安装livedown,在电脑上总是安装失败，懒得折腾就没有继续尝试；Realtime-preview是在emacs编辑器中实现预览，效果并不理想；Impatient-mode看效果演示视频并不是我想要的。</p>
-<h1 id="flymd配置"><a href="#flymd配置" class="headerlink" title="flymd配置"></a>flymd配置</h1><p>flymd的GitHub地址在<a href="https://github.com/mola-T/flymd">这里</a><br>使用flymd需要用Firefox预览，虽然有Chrome的解决方案，但不推荐，<br>如果使用的是spacemacs，在dotspacemacs-additional-packages中加入flymd，<br>在dotspacemacs/user-config配置代码如下</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">use-package</span> flymd</div><div class="line">  <span class="symbol">:init</span> (<span class="name">defun</span> my-flymd-browser-function (<span class="name">url</span>)</div><div class="line">    (<span class="name">let</span> ((<span class="name">browse-url-browser-function</span> 'browse-url-firefox))</div><div class="line">      (<span class="name">browse-url</span> url)))</div><div class="line">  (<span class="name">setq</span> flymd-browser-open-function 'my-flymd-browser-function)</div><div class="line">  <span class="symbol">:bind</span> (<span class="string">"C-c C-m"</span> . flymd-flyit)</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="flymd配置"><a href="#flymd配置" class="headerlink" title="flymd配置"></a>flymd配置</h1><p>flymd的GitHub地址在<a href="https://github.com/mola-T/flymd">这里</a><br>使用flymd需要用Firefox预览，虽然有Chrome的解决方案，但不推荐，<br>如果使用的是spacemacs，在dotspacemacs-additional-packages中加入flymd，<br>在dotspacemacs/user-config配置代码如下<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">use-package</span> flymd</div><div class="line">  <span class="symbol">:init</span> (<span class="name">defun</span> my-flymd-browser-function (<span class="name">url</span>)</div><div class="line">    (<span class="name">let</span> ((<span class="name">browse-url-browser-function</span> 'browse-url-firefox))</div><div class="line">      (<span class="name">browse-url</span> url)))</div><div class="line">  (<span class="name">setq</span> flymd-browser-open-function 'my-flymd-browser-function)</div><div class="line">  <span class="symbol">:bind</span> (<span class="string">"C-c C-m"</span> . flymd-flyit)</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>根据GitHub上的配置完成后，使用flymd-flyit预览时并不是我们想要的效果，浏览器打开的文件地址前没有file:///,<br>找到elpa文件夹下的flymd,打开flymd.el文件，搜索<code>funcall flymd-browser-open-function</code>在<code>(flymd-get-output-directory buffer)</code>前加上<code>&quot;file:///&quot;</code><br>修改后的代码如下<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name">funcall</span> flymd-browser-open-function</div><div class="line">	(<span class="name">concat</span> <span class="string">"file:///"</span> (<span class="name">flymd-get-output-directory</span> buffer) flymd-preview-html-filename))</div></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/07/emacs-Markdown实时预览/#more" rel="contents">
@@ -862,13 +858,8 @@
       
         
           <h1 id="1-安装NppExec插件"><a href="#1-安装NppExec插件" class="headerlink" title="1 安装NppExec插件"></a>1 安装NppExec插件</h1><ul>
-<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。</li>
-</ul>
-<img src="http://obp3vkygi.qnssl.com/static/images/notepad_1.png">
-<ul>
-<li>选取NppExec插件，然后点击Install</li>
-</ul>
-<img src="http://obp3vkygi.qnssl.com/static/images/notepad_2.png">
+<li>插件—&gt;Plugin Manager—&gt;show  Plugin Manager。<img src="http://obp3vkygi.qnssl.com/static/images/notepad_1.png"></li>
+<li>选取NppExec插件，然后点击Install<img src="http://obp3vkygi.qnssl.com/static/images/notepad_2.png">
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/06/notepad-配置perl运行环境/#more" rel="contents">
               阅读全文 &raquo;

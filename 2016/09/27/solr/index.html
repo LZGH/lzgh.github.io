@@ -65,24 +65,21 @@
 
 
 <meta name="description" content="本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。solr参考文档地址：参考文档solr官方下载地址：下载地址，下载目前最新版6.2.1
-
-启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输">
+启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="solr6.2+oracle搜索引擎配置">
 <meta property="og:url" content="https://lzgh.github.io/2016/09/27/solr/index.html">
 <meta property="og:site_name" content="Lee Blog">
 <meta property="og:description" content="本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。solr参考文档地址：参考文档solr官方下载地址：下载地址，下载目前最新版6.2.1
-
-启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输">
+启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输入">
 <meta property="og:image" content="http://obp3vkygi.qnssl.com/static/images/solr_start.png">
 <meta property="og:image" content="http://obp3vkygi.qnssl.com/static/images/solr_core_select.png">
 <meta property="og:image" content="http://obp3vkygi.qnssl.com/static/images/solr_core_list.png">
-<meta property="og:updated_time" content="2016-09-29T06:00:34.069Z">
+<meta property="og:updated_time" content="2016-09-29T06:04:43.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="solr6.2+oracle搜索引擎配置">
 <meta name="twitter:description" content="本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。solr参考文档地址：参考文档solr官方下载地址：下载地址，下载目前最新版6.2.1
-
-启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输">
+启动Solr将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行solr start启动服务,启动成功后，浏览器中输入">
 <meta name="twitter:image" content="http://obp3vkygi.qnssl.com/static/images/solr_start.png">
 
 
@@ -335,23 +332,15 @@
       
         <blockquote>
 <p>本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。<br>solr参考文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/" target="_blank" rel="external">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="external">下载地址</a>，下载目前最新版6.2.1</p>
-</blockquote>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr" target="_blank" rel="external">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
-<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
-</blockquote>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3><a id="more"></a>
 <p><code>solr create -c les</code>创建一个core,创建成功后，在solr-6.2.1\server\solr文件夹下出现les文件夹，<br>重新启动solr，刷新solr控制台，core selector处选择刚才添加的core<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_select.png"><br>选择后，出现core的操作列表<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_list.png"></p>
 <h4 id="常用菜单作用："><a href="#常用菜单作用：" class="headerlink" title="常用菜单作用："></a>常用菜单作用：</h4><p>Analysis 可以测试分词效果<br>Dataimport 数据导入导入数据<br>Query      数据查询</p>
-<h4 id="常用solr查询参数介绍："><a href="#常用solr查询参数介绍：" class="headerlink" title="常用solr查询参数介绍："></a>常用solr查询参数介绍：</h4><p>q      查询关键字，默认为q=<em>:</em>，不能为空<br>fq     在q查询的结果中过滤查询,fq=type:1<br>fl     指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort<br>start  返回结果的第几条记录开始，一般分页用，默认0开始<br>rows   指定返回结果最多有多少条记录，默认值为 10，配合start实现分页<br>sort   排序方式，例如id  desc 表示按照 “id” 降序<br>wt     指定输出格式，有 xml, json, php等</p>
-<h4 id="常用solr检索运算符"><a href="#常用solr检索运算符" class="headerlink" title="常用solr检索运算符"></a>常用solr检索运算符</h4><p>?   单个任意字符的通配，如type:?1 </p>
-<ul>
-<li>多个任意字符的通配<br>~   模糊检索</li>
-</ul>
-<ul>
-<li>存在操作符<br>AND、&amp;&amp;、OR、||  布尔操作符  如q=type:1 or type:2 java发出请求时，可用+号代替空格，否则会报错q=type:1+or+type:2<br>NOT、!、-  排除操作符不能单独与项使用构成查询<br>()  用于构成子查询<br>[]  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]<br>{}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}</li>
-</ul>
+<h4 id="常用solr查询参数介绍："><a href="#常用solr查询参数介绍：" class="headerlink" title="常用solr查询参数介绍："></a>常用solr查询参数介绍：</h4><p>q     查询关键字，默认为q=<em>:</em>，不能为空<br>fq     在q查询的结果中过滤查询,fq=type:1<br>fl     指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort<br>start  返回结果的第几条记录开始，一般分页用，默认0开始<br>rows   指定返回结果最多有多少条记录，默认值为 10，配合start实现分页<br>sort   排序方式，例如id  desc 表示按照 “id” 降序<br>wt     指定输出格式，有 xml, json, php等</p>
+<h4 id="常用solr检索运算符"><a href="#常用solr检索运算符" class="headerlink" title="常用solr检索运算符"></a>常用solr检索运算符</h4><p>?   单个任意字符的通配，如type:?1<br>‘*’   多个任意字符的通配<br>‘~’   模糊检索<br>‘+’   存在操作符<br>AND、&amp;&amp;、OR、||  布尔操作符  如q=type:1 or type:2 java发出请求时，可用+号代替空格，否则会报错q=type:1+or+type:2<br>NOT、!、- 排除操作符不能单独与项使用构成查询<br>()  用于构成子查询<br>[]  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]<br>{}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}</p>
 <h3 id="配置dataimport"><a href="#配置dataimport" class="headerlink" title="配置dataimport"></a>配置dataimport</h3><p>打开les/conf文件夹下的solrconfig.xml,在75行添加jar包<br><code>&lt;lib dir=&quot;${solr.install.dir:../../../..}/dist/&quot; regex=&quot;solr-dataimporthandler-.*\.jar&quot; /&gt;</code><br>745行添加配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;requestHandler name=&quot;/dataimport&quot; class=&quot;solr.DataImportHandler&quot;&gt;</div><div class="line">  &lt;lst name=&quot;defaults&quot;&gt;</div><div class="line">    &lt;str name=&quot;config&quot;&gt;db-data-config.xml&lt;/str&gt;</div><div class="line">  &lt;/lst&gt;</div><div class="line">&lt;/requestHandler&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
 <h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><p>连接oracle需要ojdbc14.jar，放到solr-6.2.1\server\solr-webapp\webapp\WEB-INF\lib文件夹下<br>solr-6.2.1\server\solr\les\conf文件夹下创建文件db-data-config.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;dataConfig&gt;</div><div class="line">    &lt;dataSource driver=&quot;oracle.jdbc.driver.OracleDriver&quot; url=&quot;jdbc:oracle:thin:@192.168.20.132:1521:orcl&quot; user=&quot;username&quot; password=&quot;pd&quot; /&gt;</div><div class="line">    &lt;document&gt;</div><div class="line">        &lt;entity name=&quot;zhcx&quot; query=&quot;select id,bt,zy,type,key from table&quot;&gt;</div><div class="line">            &lt;field column=&quot;id&quot; name=&quot;id&quot; /&gt;</div><div class="line">            &lt;field column=&quot;bt&quot; name=&quot;bt&quot; /&gt;</div><div class="line">            &lt;field column=&quot;zy&quot; name=&quot;zy&quot; /&gt;</div><div class="line">            &lt;field column=&quot;type&quot; name=&quot;type&quot; /&gt;</div><div class="line">            &lt;field column=&quot;key&quot; name=&quot;key&quot; /&gt;</div><div class="line">        &lt;/entity&gt;</div><div class="line">    &lt;/document&gt;</div><div class="line">&lt;/dataConfig&gt;</div></pre></td></tr></table></figure></p>
 <p>打开文件managed-schema，搜索uniqueKey，将值改为你的唯一键，该唯一键如果有重复，数据将被覆盖。<br><code>&lt;uniqueKey&gt;key&lt;/uniqueKey&gt;</code><br>121行添加字段，要和db-data-config.xml中字段对应，添加后如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;field name=&quot;id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;bt&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;zy&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;type&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;key&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;</div><div class="line">&lt;field name=&quot;_version_&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;false&quot;/&gt;</div><div class="line">&lt;field name=&quot;_root_&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;false&quot; docValues=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;_text_&quot; type=&quot;text_general&quot; indexed=&quot;true&quot; stored=&quot;false&quot; multiValued=&quot;true&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p>重启solr，Dataimport导入数据,Query进行查询，</p>
