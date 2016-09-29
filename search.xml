@@ -8,9 +8,11 @@
       <url>https://lzgh.github.io/2016/09/27/solr/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>本文介绍使用solr6.2搭建oracle全文检索服务，配置了中文分词以及数据同步。<br>solr说明文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/" target="_blank" rel="external">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="external">下载地址</a>，下载目前最新版6.2.1</p>
+</blockquote>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎</p>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>该版本solr需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行.<br>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr" target="_blank" rel="external">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
+<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 </blockquote>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3><a id="more"></a>
 <p><code>solr create -c les</code>创建一个core,创建成功后，在solr-6.2.1\server\solr文件夹下出现les文件夹，<br>重新启动solr，刷新solr控制台，core selector处选择刚才添加的core<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_select.png"><br>选择后，出现core的操作列表<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_list.png"></p>
