@@ -4,22 +4,23 @@
   
     
     <entry>
-      <title><![CDATA[solr6.2+oracle搜索引擎配置]]></title>
+      <title><![CDATA[solr6.2搜索引擎配置]]></title>
       <url>https://lzgh.github.io/2016/09/27/solr/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。<br>solr参考文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/" target="_blank" rel="external">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="external">下载地址</a>，下载目前最新版6.2.1</p>
+<p>本文介绍使用solr6.2搭建oracle全文检索服务，配置了中文分词以及数据同步。<br>solr说明文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/" target="_blank" rel="external">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="external">下载地址</a>，下载目前最新版6.2.1</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎</p>
+<h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>该版本solr需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行.<br>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr" target="_blank" rel="external">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 </blockquote>
-<h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr" target="_blank" rel="external">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
-<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3><a id="more"></a>
 <p><code>solr create -c les</code>创建一个core,创建成功后，在solr-6.2.1\server\solr文件夹下出现les文件夹，<br>重新启动solr，刷新solr控制台，core selector处选择刚才添加的core<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_select.png"><br>选择后，出现core的操作列表<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_core_list.png"></p>
-<h4 id="常用菜单作用："><a href="#常用菜单作用：" class="headerlink" title="常用菜单作用："></a>常用菜单作用：</h4><p>Analysis 可以测试分词效果<br>Dataimport 数据导入导入数据<br>Query      数据查询</p>
+<h4 id="常用菜单作用："><a href="#常用菜单作用：" class="headerlink" title="常用菜单作用："></a>常用菜单作用：</h4><blockquote>
+<p>Analysis 可以测试分词效果<br>Dataimport 数据导入导入数据<br>Query      数据查询</p>
 </blockquote>
 <h4 id="常用solr查询参数介绍："><a href="#常用solr查询参数介绍：" class="headerlink" title="常用solr查询参数介绍："></a>常用solr查询参数介绍：</h4><blockquote>
 <p>q     查询关键字，默认为q=<em>:</em>，不能为空<br>fq     在q查询的结果中过滤查询,fq=type:1<br>fl     指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort<br>start  返回结果的第几条记录开始，一般分页用，默认0开始<br>rows   指定返回结果最多有多少条记录，默认值为 10，配合start实现分页<br>sort   排序方式，例如id  desc 表示按照 “id” 降序<br>wt     指定输出格式，有 xml, json, php等</p>
 </blockquote>
-<h4 id="常用solr检索运算符"><a href="#常用solr检索运算符" class="headerlink" title="常用solr检索运算符"></a>常用solr检索运算符</h4><blockquote>
+<h4 id="常用solr检索运算符："><a href="#常用solr检索运算符：" class="headerlink" title="常用solr检索运算符："></a>常用solr检索运算符：</h4><blockquote>
 <p>‘?’   单个任意字符的通配，如type:?1<br>‘*’   多个任意字符的通配<br>‘~’   模糊检索<br>‘+’   存在操作符<br>AND、&amp;&amp;、OR、||  布尔操作符  如q=type:1 or type:2 java发出请求时，可用+号代替空格，否则会报错q=type:1+or+type:2<br>NOT、!、- 排除操作符不能单独与项使用构成查询<br>()  用于构成子查询<br>[]  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]<br>{}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}</p>
 </blockquote>
 <h3 id="配置dataimport"><a href="#配置dataimport" class="headerlink" title="配置dataimport"></a>配置dataimport</h3><p>打开les/conf文件夹下的solrconfig.xml,在75行添加jar包<br><code>&lt;lib dir=&quot;${solr.install.dir:../../../..}/dist/&quot; regex=&quot;solr-dataimporthandler-.*\.jar&quot; /&gt;</code><br>745行添加配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;requestHandler name=&quot;/dataimport&quot; class=&quot;solr.DataImportHandler&quot;&gt;</div><div class="line">  &lt;lst name=&quot;defaults&quot;&gt;</div><div class="line">    &lt;str name=&quot;config&quot;&gt;db-data-config.xml&lt;/str&gt;</div><div class="line">  &lt;/lst&gt;</div><div class="line">&lt;/requestHandler&gt;</div></pre></td></tr></table></figure></p>
