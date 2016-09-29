@@ -327,8 +327,10 @@
         
           <blockquote>
 <p>本文介绍使用solr6.2.1搭建oracle全文检索服务，配置中文分词以及数据同步，需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行。<br>solr参考文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/">下载地址</a>，下载目前最新版6.2.1</p>
+</blockquote>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
-<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
+<h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
+<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/27/solr/#more" rel="contents">
