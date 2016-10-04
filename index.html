@@ -248,7 +248,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/27/solr/" itemprop="url">
-                  solr6.2搜索引擎配置
+                  solr6.2结合oracle提供实时数据的全文检索服务
                 </a>
               
             
@@ -302,7 +302,7 @@
 
           
           
-             <span id="/2016/09/27/solr/" class="leancloud_visitors" data-flag-title="solr6.2搜索引擎配置">
+             <span id="/2016/09/27/solr/" class="leancloud_visitors" data-flag-title="solr6.2结合oracle提供实时数据的全文检索服务">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -326,12 +326,12 @@
       
         
           <blockquote>
-<p>本文介绍使用solr6.2搭建oracle全文检索服务，配置了中文分词以及数据同步。<br>solr说明文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/">下载地址</a>，下载目前最新版6.2.1</p>
+<p>本文介绍solr6.2搭建oracle全文检索服务以及中文分词和实时增量数据导入配置。<br>solr说明文档地址：<a href="https://cwiki.apache.org/confluence/display/solr/">参考文档</a><br>solr官方下载地址：<a href="http://archive.apache.org/dist/lucene/solr/">下载地址</a>，下载目前最新版6.2.1</p>
 </blockquote>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Solr是一个高性能，采用Java5开发，基于的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。</p>
 <h3 id="启动Solr"><a href="#启动Solr" class="headerlink" title="启动Solr"></a>启动Solr</h3><p>该版本solr需要环境jdk1.8及以上，新版的solr自带jetty服务器，可以独立运行.<br>将下载好的压缩包解压后，打开命令窗口，进入solr-6.2.1\bin目录,执行<code>solr start</code>启动服务,<br>启动成功后，浏览器中输入 <a href="http://localhost:8983/solr">http://localhost:8983/solr</a> 可以看到如下图所示的solr管理界面<br><img src="http://obp3vkygi.qnssl.com/static/images/solr_start.png"></p>
 <h3 id="solr常用命令"><a href="#solr常用命令" class="headerlink" title="solr常用命令"></a>solr常用命令</h3><blockquote>
-<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart          重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
+<p>bin/solr start  -help     查看start帮助<br>bin/solr start            启动单机版<br>bin/solr restart -p 8983  重启项目<br>bin/solr create -help     查看create帮助<br>bin/solr create -c abc    创建core</p>
 </blockquote>
 <h3 id="创建core"><a href="#创建core" class="headerlink" title="创建core"></a>创建core</h3>
           <div class="post-more-link text-center">
