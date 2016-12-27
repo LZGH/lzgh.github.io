@@ -46,7 +46,7 @@
 <link href="http://obp3vkygi.qnssl.com/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -64,12 +64,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lee Blog">
-<meta property="og:url" content="https://lzgh.github.io/tags/Markdown/index.html">
+<meta name="description" content="网上有一些切割pdf的工具，有的收费，有的打水印，有的限制100M以下，不如自己写一个。该脚本使用的库是PyPDF2,可以在http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载1234567891011121314151617181920&amp;apos;&amp;apos;&amp;apos;根据输入页码，切割pdf&amp;apos;&amp;apos;&amp;apos;from PyPDF2 i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python实现根据页码切割pdf">
+<meta property="og:url" content="https://lzgh.github.io/2016/12/27/split-pdf/index.html">
 <meta property="og:site_name" content="Lee Blog">
+<meta property="og:description" content="网上有一些切割pdf的工具，有的收费，有的打水印，有的限制100M以下，不如自己写一个。该脚本使用的库是PyPDF2,可以在http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载1234567891011121314151617181920&amp;apos;&amp;apos;&amp;apos;根据输入页码，切割pdf&amp;apos;&amp;apos;&amp;apos;from PyPDF2 i">
+<meta property="og:updated_time" content="2016-12-27T03:08:53.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lee Blog">
+<meta name="twitter:title" content="Python实现根据页码切割pdf">
+<meta name="twitter:description" content="网上有一些切割pdf的工具，有的收费，有的打水印，有的限制100M以下，不如自己写一个。该脚本使用的库是PyPDF2,可以在http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载1234567891011121314151617181920&amp;apos;&amp;apos;&amp;apos;根据输入页码，切割pdf&amp;apos;&amp;apos;&amp;apos;from PyPDF2 i">
 
 
 
@@ -100,9 +104,9 @@
 
 
 
-  <link rel="canonical" href="https://lzgh.github.io/tags/Markdown/"/>
+  <link rel="canonical" href="https://lzgh.github.io/2016/12/27/split-pdf/"/>
 
-  <title> 标签: Markdown | Lee Blog </title>
+  <title> Python实现根据页码切割pdf | Lee Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -112,7 +116,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,46 +227,198 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Markdown
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python实现根据页码切割pdf
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-27T10:45:48+08:00" content="2016-12-27">
+              2016-12-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/27/split-pdf/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/27/split-pdf/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/27/split-pdf/" class="leancloud_visitors" data-flag-title="Python实现根据页码切割pdf">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>网上有一些切割pdf的工具，有的收费，有的打水印，有的限制100M以下，不如自己写一个。<br>该脚本使用的库是PyPDF2,可以在<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a> 下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;&apos;根据输入页码，切割pdf&apos;&apos;&apos;</div><div class="line">from PyPDF2 import PdfFileWriter, PdfFileReader</div><div class="line"></div><div class="line">page_str = &quot;27-44,45-127,128-255,256-349,350-407,408-473&quot;</div><div class="line">file_name = &quot;test.pdf&quot;</div><div class="line"></div><div class="line"></div><div class="line">name = file_name.split(&quot;.&quot;)</div><div class="line"></div><div class="line">output = PdfFileWriter()</div><div class="line">target_file = PdfFileReader(open(file_name, &quot;rb&quot;))</div><div class="line"></div><div class="line">page_group = page_str.split(&apos;,&apos;)</div><div class="line">for num, key in enumerate(page_group):</div><div class="line">    page_start_end = key.split(&apos;-&apos;)</div><div class="line">    for i in range(int(page_start_end[0]),int(page_start_end[1])+1):</div><div class="line">        output.addPage(target_file.getPage(i))</div><div class="line">    outputStream = open(name[0]+str(num+1)+&quot;.pdf&quot;, &quot;wb&quot;)</div><div class="line">    output.write(outputStream)</div><div class="line">    outputStream.close()</div></pre></td></tr></table></figure></p>
+</blockquote>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/08/07/emacs-Markdown实时预览/" itemprop="url">
-              
-                <span itemprop="name">emacs Markdown实时预览</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://obixkdbw8.bkt.clouddn.com/wechat-reward-image.png" alt="Lee WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-07T11:08:22+08:00"
-              content="2016-08-07" >
-          08-07
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/31/emacs快捷键/" rel="next" title="emacs基本快捷键">
+                <i class="fa fa-chevron-left"></i> emacs基本快捷键
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -270,6 +426,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/27/split-pdf/"
+           data-title="Python实现根据页码切割pdf" data-url="https://lzgh.github.io/2016/12/27/split-pdf/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -289,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://obixkdbw8.bkt.clouddn.com/avatar.jpg"
@@ -361,6 +534,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -464,6 +648,10 @@
 
 
   
+  <script type="text/javascript" src="http://obp3vkygi.qnssl.com/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="http://obp3vkygi.qnssl.com/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
