@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>https://lzgh.github.io/2017/12/21/python-django/</loc>
+    <lastmod>2017-12-21T10:08:13.375Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目</title>
+        <pubTime>2017-12-21T08:44:06.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>django</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="https://lzgh.github.io/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lzgh.github.io/2016/09/27/solr/</loc>
+    <lastmod>2017-12-21T08:39:31.816Z</lastmod>
+    <data>
+        <display>
+        <title>solr6.2结合oracle提供实时数据的全文检索服务</title>
+        <pubTime>2016-09-27T09:25:47.000Z</pubTime>
+        
+        <tag>solr</tag>
+         
+         
+           
+             
+              <breadCrumb title="solr" url="https://lzgh.github.io/categories/solr/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://lzgh.github.io/2016/12/27/split-pdf/</loc>
     <lastmod>2017-03-18T03:34:23.530Z</lastmod>
     <data>
@@ -57,26 +99,6 @@
            
              
               <breadCrumb title="technology" url="https://lzgh.github.io/categories/technology/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://lzgh.github.io/2016/09/27/solr/</loc>
-    <lastmod>2016-10-04T14:50:38.553Z</lastmod>
-    <data>
-        <display>
-        <title>solr6.2结合oracle提供实时数据的全文检索服务</title>
-        <pubTime>2016-09-27T09:25:47.000Z</pubTime>
-        
-        <tag>solr</tag>
-         
-         
-           
-             
-              <breadCrumb title="系统优化" url="https://lzgh.github.io/categories/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
           
         </display>
     </data>

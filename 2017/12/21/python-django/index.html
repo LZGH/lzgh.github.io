@@ -46,10 +46,12 @@
 <link href="http://obp3vkygi.qnssl.com/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="netty," />
+  <meta name="keywords" content="python,django," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="Lee Blog" type="application/atom+xml" />
@@ -64,24 +66,22 @@
 
 
 
-<meta name="description" content="本文记录自己Netty的学习过程搭建过程参考自：Netty用户指南
+<meta name="description" content="在CentOS 7上部署Django踩了很多坑，记录下来以供参考apache,python,mod_wsgi都采用源码编译的方式，便于查找问题由于部署环境差异，在部署过程中肯定会遇到不同的问题，缺少什么安装什么，查看错误日志，一步步解决
 
-1.搭建一个简单的服务端Netty用户指南提供了demo以及讲解，跟着操作就行。为了方便阅读源码，通过Maven将Netty配置到项目中去。配置Netty依赖代码如下12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;io.netty&amp;lt;/groupId&amp;gt;    &amp;lt;artifac">
+Python3.6安装在编译python前，先安装sqlite-devel，yum -y install sqlite-devel，从官网下载python3.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Netty入门">
-<meta property="og:url" content="https://lzgh.github.io/2016/10/13/netty-start/index.html">
+<meta property="og:title" content="CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目">
+<meta property="og:url" content="https://lzgh.github.io/2017/12/21/python-django/index.html">
 <meta property="og:site_name" content="Lee Blog">
-<meta property="og:description" content="本文记录自己Netty的学习过程搭建过程参考自：Netty用户指南
+<meta property="og:description" content="在CentOS 7上部署Django踩了很多坑，记录下来以供参考apache,python,mod_wsgi都采用源码编译的方式，便于查找问题由于部署环境差异，在部署过程中肯定会遇到不同的问题，缺少什么安装什么，查看错误日志，一步步解决
 
-1.搭建一个简单的服务端Netty用户指南提供了demo以及讲解，跟着操作就行。为了方便阅读源码，通过Maven将Netty配置到项目中去。配置Netty依赖代码如下12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;io.netty&amp;lt;/groupId&amp;gt;    &amp;lt;artifac">
-<meta property="og:image" content="http://obp3vkygi.qnssl.com/static/images/netty_print.png">
-<meta property="og:updated_time" content="2016-10-14T01:14:43.122Z">
+Python3.6安装在编译python前，先安装sqlite-devel，yum -y install sqlite-devel，从官网下载python3.">
+<meta property="og:updated_time" content="2017-12-21T10:08:13.375Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Netty入门">
-<meta name="twitter:description" content="本文记录自己Netty的学习过程搭建过程参考自：Netty用户指南
+<meta name="twitter:title" content="CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目">
+<meta name="twitter:description" content="在CentOS 7上部署Django踩了很多坑，记录下来以供参考apache,python,mod_wsgi都采用源码编译的方式，便于查找问题由于部署环境差异，在部署过程中肯定会遇到不同的问题，缺少什么安装什么，查看错误日志，一步步解决
 
-1.搭建一个简单的服务端Netty用户指南提供了demo以及讲解，跟着操作就行。为了方便阅读源码，通过Maven将Netty配置到项目中去。配置Netty依赖代码如下12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;io.netty&amp;lt;/groupId&amp;gt;    &amp;lt;artifac">
-<meta name="twitter:image" content="http://obp3vkygi.qnssl.com/static/images/netty_print.png">
+Python3.6安装在编译python前，先安装sqlite-devel，yum -y install sqlite-devel，从官网下载python3.">
 
 
 
@@ -112,9 +112,9 @@
 
 
 
-  <link rel="canonical" href="https://lzgh.github.io/2016/10/13/netty-start/"/>
+  <link rel="canonical" href="https://lzgh.github.io/2017/12/21/python-django/"/>
 
-  <title> Netty入门 | Lee Blog </title>
+  <title> CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目 | Lee Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
             
             
               
-                Netty入门
+                CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T21:45:34+08:00" content="2016-10-13">
-              2016-10-13
+            <time itemprop="dateCreated" datetime="2017-12-21T16:44:06+08:00" content="2017-12-21">
+              2017-12-21
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/technology/" itemprop="url" rel="index">
-                    <span itemprop="name">technology</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -298,8 +298,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/13/netty-start/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/netty-start/" itemprop="commentsCount"></span>
+                <a href="/2017/12/21/python-django/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/python-django/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -309,7 +309,7 @@
 
           
           
-             <span id="/2016/10/13/netty-start/" class="leancloud_visitors" data-flag-title="Netty入门">
+             <span id="/2017/12/21/python-django/" class="leancloud_visitors" data-flag-title="CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -332,13 +332,28 @@
 
       
         <blockquote>
-<p>本文记录自己Netty的学习过程<br>搭建过程参考自：<a href="http://netty.io/wiki/user-guide-for-5.x.html" target="_blank" rel="external">Netty用户指南</a></p>
+<p>在CentOS 7上部署Django踩了很多坑，记录下来以供参考<br>apache,python,mod_wsgi都采用源码编译的方式，便于查找问题<br>由于部署环境差异，在部署过程中肯定会遇到不同的问题，缺少什么安装什么，查看错误日志，一步步解决</p>
 </blockquote>
-<h3 id="1-搭建一个简单的服务端"><a href="#1-搭建一个简单的服务端" class="headerlink" title="1.搭建一个简单的服务端"></a>1.搭建一个简单的服务端</h3><p>Netty用户指南提供了demo以及讲解，跟着操作就行。<br>为了方便阅读源码，通过Maven将Netty配置到项目中去。配置Netty依赖代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;io.netty&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;netty-all&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;5.0.0.Alpha2&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>创建DiscardServerHandler类，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Handles a server-side channel.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscardServerHandler</span> <span class="keyword">extends</span> <span class="title">ChannelHandlerAdapter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123;</div><div class="line">        ByteBuf in = (ByteBuf) msg;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">while</span> (in.isReadable()) &#123;</div><div class="line">                System.out.print((<span class="keyword">char</span>) in.readByte());</div><div class="line">                System.out.flush();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            ReferenceCountUtil.release(msg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionCaught</span><span class="params">(ChannelHandlerContext ctx, Throwable cause)</span> </span>&#123;</div><div class="line">        <span class="comment">// Close the connection when an exception is raised.</span></div><div class="line">        cause.printStackTrace();</div><div class="line">        ctx.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>创建DiscardServer类，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscardServer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> port;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiscardServer</span><span class="params">(<span class="keyword">int</span> port)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.port = port;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        EventLoopGroup bossGroup = <span class="keyword">new</span> NioEventLoopGroup(); <span class="comment">// (1)</span></div><div class="line">        EventLoopGroup workerGroup = <span class="keyword">new</span> NioEventLoopGroup();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ServerBootstrap b = <span class="keyword">new</span> ServerBootstrap(); <span class="comment">// (2)</span></div><div class="line">            b.group(bossGroup, workerGroup)</div><div class="line">                    .channel(NioServerSocketChannel.class) <span class="comment">// (3)</span></div><div class="line">                    .childHandler(<span class="keyword">new</span> ChannelInitializer&lt;SocketChannel&gt;() &#123; <span class="comment">// (4)</span></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">                            ch.pipeline().addLast(<span class="keyword">new</span> DiscardServerHandler());</div><div class="line">                        &#125;</div><div class="line">                    &#125;)</div><div class="line">                    .option(ChannelOption.SO_BACKLOG, <span class="number">128</span>)          <span class="comment">// (5)</span></div><div class="line">                    .childOption(ChannelOption.SO_KEEPALIVE, <span class="keyword">true</span>); <span class="comment">// (6)</span></div><div class="line"></div><div class="line">            <span class="comment">// Bind and start to accept incoming connections.</span></div><div class="line">            ChannelFuture f = b.bind(port).sync(); <span class="comment">// (7)</span></div><div class="line"></div><div class="line">            <span class="comment">// Wait until the server socket is closed.</span></div><div class="line">            <span class="comment">// In this example, this does not happen, but you can do that to gracefully</span></div><div class="line">            <span class="comment">// shut down your server.</span></div><div class="line">            f.channel().closeFuture().sync();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            workerGroup.shutdownGracefully();</div><div class="line">            bossGroup.shutdownGracefully();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">int</span> port;</div><div class="line">        <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>) &#123;</div><div class="line">            port = Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            port = <span class="number">8080</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">new</span> DiscardServer(port).run();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>运行DiscardServer中的main方法，Netty服务端就启动了。<br>在命令行输入<code>telnet localhost 8080</code>，然后随意输入一些字符，Java控制台将输出这些字符，效果如下：<br><img src="http://obp3vkygi.qnssl.com/static/images/netty_print.png"></p>
+<h4 id="Python3-6安装"><a href="#Python3-6安装" class="headerlink" title="Python3.6安装"></a>Python3.6安装</h4><p>在编译python前，先安装sqlite-devel，<code>yum -y install sqlite-devel</code>，从官网下载python3.6解压后进入解压路径，执行<code>sudo ./configure --prefix=/usr/local/python36 --enable-shared --enable-loadable-sqlite-extensions --with-ssl --enable-loadable-sqlite-extensions</code>，这里加了很多参数，不加这些参数到后面会出现问题。然后执行make&amp;make install(后面省略安装过程)，验证python可用后，进行下一步</p>
+<h4 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h4><p><code>sudo /usr/local/python36/bin/pip3.6 install Django==1.11</code></p>
+<h4 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h4><p><code>sudo ./configure --prefix=/usr/local/pcre-8.00</code></p>
+<h4 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache:"></a>安装apache:</h4><p><code>sudo ./configure --with-pcre=/usr/local/pcre-8.00 --prefix=/usr/local/apache</code></p>
+<p>启动：<code>bin/apachectl -k start</code>，启动后访问80端口查看是否启动成功，启动失败可以查看错误日志logs/error_log</p>
+<h4 id="安装mod-wsgi"><a href="#安装mod-wsgi" class="headerlink" title="安装mod_wsgi"></a>安装mod_wsgi</h4><p><code>sudo ./configure --prefix=/usr/local/mod_wsgi --with-apxs=/usr/local/apache/bin/apxs --with-python=/usr/local/python36/bin/python3.6</code></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>这里不介绍Django项目的创建了，写一下主要配置<br>在apache/conf/httpd.conf中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">LoadModule  wsgi_module modules/mod_wsgi.so</div><div class="line">WSGIScriptAlias / /path/project_name/app_name/wsgi.py</div><div class="line">WSGIPythonHome /usr/local/python36</div><div class="line">WSGIPythonPath /path/project_name</div><div class="line"></div><div class="line">&lt;Directory /path/project_name/app_name&gt;</div><div class="line">	&lt;Files wsgi.py&gt;</div><div class="line">		Require all granted</div><div class="line">	&lt;/Files&gt;</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure></p>
+<p>配置好后，重启apache，即可访问Django</p>
+<h4 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h4><ul>
+<li><p>error while loading shared libraries: libpython3.6m.so.1.0: cannot open shar</p>
+<blockquote>
+<p>解决：新建文件 vim /etc/ld.so.conf.d/python3.6.conf<br>加入内容：/usr/local/lib<br>保存退出后运行：ldconfig</p>
+</blockquote>
+</li>
+<li><p>Invalid HTTP_HOST header: ‘you_ip’. You may need to add ‘you_ip’ to ALLOWED_HOSTS.</p>
+<blockquote>
+<p>解决：修改/path/project_name/app_name/use/settings.py，<code>ALLOWED_HOSTS = [&#39;you_ip&#39;]</code></p>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -377,7 +392,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/netty/" rel="tag">#netty</a>
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/django/" rel="tag">#django</a>
           
         </div>
       
@@ -386,17 +403,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/27/solr/" rel="next" title="solr6.2结合oracle提供实时数据的全文检索服务">
-                <i class="fa fa-chevron-left"></i> solr6.2结合oracle提供实时数据的全文检索服务
+              <a href="/2016/12/27/split-pdf/" rel="next" title="Python实现根据页码切割pdf">
+                <i class="fa fa-chevron-left"></i> Python实现根据页码切割pdf
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/31/emacs快捷键/" rel="prev" title="emacs基本快捷键">
-                emacs基本快捷键 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -445,8 +458,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/13/netty-start/"
-           data-title="Netty入门" data-url="https://lzgh.github.io/2016/10/13/netty-start/">
+      <div class="ds-thread" data-thread-key="2017/12/21/python-django/"
+           data-title="CentOS 7 + Python3.6 + Apache + mod_wsgi 部署Django项目" data-url="https://lzgh.github.io/2017/12/21/python-django/">
       </div>
     
   </div>
@@ -558,7 +571,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-搭建一个简单的服务端"><span class="nav-number">1.</span> <span class="nav-text">1.搭建一个简单的服务端</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python3-6安装"><span class="nav-number">1.</span> <span class="nav-text">Python3.6安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Django"><span class="nav-number">2.</span> <span class="nav-text">安装Django</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装pcre"><span class="nav-number">3.</span> <span class="nav-text">安装pcre</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装apache"><span class="nav-number">4.</span> <span class="nav-text">安装apache:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装mod-wsgi"><span class="nav-number">5.</span> <span class="nav-text">安装mod_wsgi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">6.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他问题"><span class="nav-number">7.</span> <span class="nav-text">其他问题</span></a></li></ol></div>
             
           </div>
         </section>
