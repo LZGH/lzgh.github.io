@@ -12,20 +12,19 @@
 <h4 id="Python3-6安装"><a href="#Python3-6安装" class="headerlink" title="Python3.6安装"></a>Python3.6安装</h4><p>在编译python前，先安装sqlite-devel，<code>yum -y install sqlite-devel</code>，从官网下载python3.6解压后进入解压路径，执行<code>sudo ./configure --prefix=/usr/local/python36 --enable-shared --enable-loadable-sqlite-extensions --with-ssl --enable-loadable-sqlite-extensions</code>，这里加了很多参数，不加这些参数到后面会出现问题。然后执行make&amp;make install(后面省略安装过程)，验证python可用后，进行下一步</p>
 <h4 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h4><p><code>sudo /usr/local/python36/bin/pip3.6 install Django==1.11</code></p>
 <h4 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h4><p><code>sudo ./configure --prefix=/usr/local/pcre-8.00</code></p>
-<h4 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache:"></a>安装apache:</h4><p><code>sudo ./configure --with-pcre=/usr/local/pcre-8.00 --prefix=/usr/local/apache</code></p>
-<p>启动：<code>bin/apachectl -k start</code>，启动后访问80端口查看是否启动成功，启动失败可以查看错误日志logs/error_log</p>
+<h4 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache:"></a>安装apache:</h4><p><code>sudo ./configure --with-pcre=/usr/local/pcre-8.00 --prefix=/usr/local/apache</code><br>启动：<code>bin/apachectl -k start</code>，启动后访问80端口查看是否启动成功，启动失败可以查看错误日志logs/error_log</p>
 <h4 id="安装mod-wsgi"><a href="#安装mod-wsgi" class="headerlink" title="安装mod_wsgi"></a>安装mod_wsgi</h4><p><code>sudo ./configure --prefix=/usr/local/mod_wsgi --with-apxs=/usr/local/apache/bin/apxs --with-python=/usr/local/python36/bin/python3.6</code></p>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>这里不介绍Django项目的创建了，写一下主要配置<br>在apache/conf/httpd.conf中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">LoadModule  wsgi_module modules/mod_wsgi.so</div><div class="line">WSGIScriptAlias / /path/project_name/app_name/wsgi.py</div><div class="line">WSGIPythonHome /usr/local/python36</div><div class="line">WSGIPythonPath /path/project_name</div><div class="line"></div><div class="line">&lt;Directory /path/project_name/app_name&gt;</div><div class="line">	&lt;Files wsgi.py&gt;</div><div class="line">		Require all granted</div><div class="line">	&lt;/Files&gt;</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure></p>
-<p>配置好后，重启apache，即可访问Django</p>
+<p>配置好后，重启apache，即可访问Django项目</p>
 <h4 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h4><ul>
 <li><p>error while loading shared libraries: libpython3.6m.so.1.0: cannot open shar</p>
 <blockquote>
-<p>解决：新建文件 vim /etc/ld.so.conf.d/python3.6.conf<br>加入内容：/usr/local/lib<br>保存退出后运行：ldconfig</p>
+<p>解决：<br>新建文件 vim /etc/ld.so.conf.d/python3.6.conf<br>加入内容：/usr/local/lib<br>保存退出后运行：ldconfig</p>
 </blockquote>
 </li>
 <li><p>Invalid HTTP_HOST header: ‘you_ip’. You may need to add ‘you_ip’ to ALLOWED_HOSTS.</p>
 <blockquote>
-<p>解决：修改/path/project_name/app_name/use/settings.py，<code>ALLOWED_HOSTS = [&#39;you_ip&#39;]</code></p>
+<p>解决：<br>修改/path/project_name/app_name/use/settings.py，<code>ALLOWED_HOSTS = [&#39;you_ip&#39;]</code></p>
 </blockquote>
 </li>
 </ul>
